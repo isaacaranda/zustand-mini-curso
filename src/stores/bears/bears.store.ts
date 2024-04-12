@@ -28,13 +28,14 @@ interface BearState {
 export const useBearStore = create<BearState>()(
 
     persist(
-        (set, get) => ({
+        (set, get, store) => ({
             blackBears: 10,
             polarBears: 5,
             pandaBears: 1,
             bears: [{ id: 1, name: 'Oso 1' }],
 
             totalBears: () => {
+                console.log(store);
                 return get().blackBears + get().polarBears + get().pandaBears + get().bears.length;
             },
 
